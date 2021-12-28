@@ -22,8 +22,10 @@ TAG = ''
 def main():
     # set env
     setproctitle.setproctitle(f"test{CONFIG['name']}")
-    os.environ["CUDA_VISIBLE_DEVICES"] = CONFIG['gpu_id']
-    device = torch.device('cuda')
+    #os.environ["CUDA_VISIBLE_DEVICES"] = CONFIG['gpu_id']
+    os.environ["CUDA_VISIBLE_DEVICES"] = ""
+    device = torch.device('cpu')
+    #device = torch.device('cuda')
 
     # load data
     bundle_train_data, bundle_test_data, item_data, assist_data = \

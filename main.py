@@ -25,8 +25,10 @@ from tensorboardX import SummaryWriter
 def main():
     #  set env
     setproctitle.setproctitle(f"train{CONFIG['name']}")
-    os.environ["CUDA_VISIBLE_DEVICES"] = CONFIG['gpu_id']
-    device = torch.device('cuda')
+    #os.environ["CUDA_VISIBLE_DEVICES"] = CONFIG['gpu_id']
+    os.environ["CUDA_VISIBLE_DEVICES"] = ""
+    device = torch.device('cpu')
+    #device = torch.device('cuda')
 
     #  fix seed
     seed = 123
@@ -34,8 +36,8 @@ def main():
     os.environ['PYTHONHASHSEED'] = str(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
+    #torch.cuda.manual_seed(seed)
+    #torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
 
     #  load data
